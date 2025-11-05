@@ -37,6 +37,20 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             ]
         );
 
+        // Add Table Style Selection
+        $this->add_control(
+            'table_style',
+            [
+                'label' => __('Table Style', 'elementor-table-by-uchit'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'style1',
+                'options' => [
+                    'style1' => __('Style 1 (Horizontal Headers)', 'elementor-table-by-uchit'),
+                    'style2' => __('Style 2 (Vertical Headers)', 'elementor-table-by-uchit'),
+                ],
+            ]
+        );
+
         $this->add_control(
             'table_header',
             [
@@ -219,6 +233,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'default' => '#1e3a8a',
                 'selectors' => [
                     '{{WRAPPER}} .custom-table thead th' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .table-style2 .table-row .row-header' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -231,6 +246,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'default' => '#ffffff',
                 'selectors' => [
                     '{{WRAPPER}} .custom-table thead th' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .table-style2 .table-row .row-header' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -240,7 +256,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'header_typography',
                 'label' => __('Typography', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .custom-table thead th',
+                'selector' => '{{WRAPPER}} .custom-table thead th, {{WRAPPER}} .table-style2 .table-row .row-header',
             ]
         );
 
@@ -259,6 +275,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .custom-table thead th' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .table-style2 .table-row .row-header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -285,6 +302,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'default' => 'left',
                 'selectors' => [
                     '{{WRAPPER}} .custom-table thead th' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .table-style2 .table-row .row-header' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -294,7 +312,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'header_border',
                 'label' => __('Border', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .custom-table thead th',
+                'selector' => '{{WRAPPER}} .custom-table thead th, {{WRAPPER}} .table-style2 .table-row .row-header',
             ]
         );
 
@@ -327,6 +345,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'default' => '#ffffff',
                 'selectors' => [
                     '{{WRAPPER}} .custom-table tbody td' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .table-style2 .table-row .row-data' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -339,6 +358,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'default' => '#333333',
                 'selectors' => [
                     '{{WRAPPER}} .custom-table tbody td' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .table-style2 .table-row .row-data' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -360,6 +380,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .custom-table tbody tr:hover td' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .table-style2 .table-row:hover .row-data' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -371,6 +392,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
                     '{{WRAPPER}} .custom-table tbody tr:hover td' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .table-style2 .table-row:hover .row-data' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -384,7 +406,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'cell_typography',
                 'label' => __('Typography', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .custom-table tbody td',
+                'selector' => '{{WRAPPER}} .custom-table tbody td, {{WRAPPER}} .table-style2 .table-row .row-data',
                 'separator' => 'before',
             ]
         );
@@ -404,6 +426,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .custom-table tbody td' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .table-style2 .table-row .row-data' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -430,6 +453,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'default' => 'left',
                 'selectors' => [
                     '{{WRAPPER}} .custom-table tbody td' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .table-style2 .table-row .row-data' => 'text-align: {{VALUE}};',
                 ],
             ]
         );
@@ -439,7 +463,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'cell_border',
                 'label' => __('Border', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .custom-table tbody td',
+                'selector' => '{{WRAPPER}} .custom-table tbody td, {{WRAPPER}} .table-style2 .table-row .row-data',
             ]
         );
 
@@ -474,6 +498,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'default' => '#f8f9fa',
                 'selectors' => [
                     '{{WRAPPER}} .custom-table.alternating-rows tbody tr:nth-child(odd) td' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .table-style2.alternating-rows .table-row:nth-child(odd) .row-data' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'enable_alternating_rows' => 'yes',
@@ -489,6 +514,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'default' => '#ffffff',
                 'selectors' => [
                     '{{WRAPPER}} .custom-table.alternating-rows tbody tr:nth-child(even) td' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .table-style2.alternating-rows .table-row:nth-child(even) .row-data' => 'background-color: {{VALUE}};',
                 ],
                 'condition' => [
                     'enable_alternating_rows' => 'yes',
@@ -533,6 +559,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'default' => '#f8f9fa',
                 'selectors' => [
                     '{{WRAPPER}} .table-mobile .table-card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'background-color: {{VALUE}};',
                 ],
             ]
         );
@@ -552,6 +579,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .table-mobile .table-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -571,6 +599,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .table-mobile .table-card' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -580,7 +609,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'mobile_card_border',
                 'label' => __('Card Border', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .table-mobile .table-card',
+                'selector' => '{{WRAPPER}} .table-mobile .table-card, {{WRAPPER}} .table-mobile-style2 .mobile-card',
             ]
         );
 
@@ -599,6 +628,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 ],
                 'selectors' => [
                     '{{WRAPPER}} .table-mobile .table-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
                 ],
             ]
         );
@@ -608,7 +638,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'mobile_card_box_shadow',
                 'label' => __('Card Box Shadow', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .table-mobile .table-card',
+                'selector' => '{{WRAPPER}} .table-mobile .table-card, {{WRAPPER}} .table-mobile-style2 .mobile-card',
             ]
         );
 
@@ -620,6 +650,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'default' => '#333333',
                 'selectors' => [
                     '{{WRAPPER}} .table-mobile .table-card .card-row .card-label' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -629,7 +660,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'mobile_label_typography',
                 'label' => __('Label Typography', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .table-mobile .table-card .card-row .card-label',
+                'selector' => '{{WRAPPER}} .table-mobile .table-card .card-row .card-label, {{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header',
             ]
         );
 
@@ -641,6 +672,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'default' => '#666666',
                 'selectors' => [
                     '{{WRAPPER}} .table-mobile .table-card .card-row .card-value' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content' => 'color: {{VALUE}};',
                 ],
             ]
         );
@@ -650,7 +682,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'mobile_value_typography',
                 'label' => __('Value Typography', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .table-mobile .table-card .card-row .card-value',
+                'selector' => '{{WRAPPER}} .table-mobile .table-card .card-row .card-value, {{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content',
             ]
         );
 
@@ -662,61 +694,115 @@ class CustomTableWidget extends \Elementor\Widget_Base {
         $headers = $settings['table_header'];
         $rows = $settings['table_rows'];
         $mobile_breakpoint = $settings['mobile_breakpoint']['size'] ?? 768;
+        $table_style = $settings['table_style'] ?? 'style1';
 
         $alternating_class = $settings['enable_alternating_rows'] === 'yes' ? 'alternating-rows' : '';
 
         ?>
-        <div class="custom-table-container" data-breakpoint="<?php echo esc_attr($mobile_breakpoint); ?>">
-            <!-- Desktop Table View -->
-            <div class="table-desktop">
-                <table class="custom-table <?php echo esc_attr($alternating_class); ?>">
-                    <thead>
-                        <tr>
-                            <?php foreach ($headers as $header) : ?>
-                                <th><?php echo esc_html($header['header_text']); ?></th>
-                            <?php endforeach; ?>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($rows as $row) : 
-                            $cells = explode(',', $row['row_data']);
-                            $cells = array_map('trim', $cells);
-                        ?>
+        <div class="custom-table-container table-<?php echo esc_attr($table_style); ?>" data-breakpoint="<?php echo esc_attr($mobile_breakpoint); ?>" data-style="<?php echo esc_attr($table_style); ?>">
+            
+            <?php if ($table_style === 'style1') : ?>
+                <!-- Style 1: Traditional Table Layout -->
+                <!-- Desktop Table View -->
+                <div class="table-desktop">
+                    <table class="custom-table <?php echo esc_attr($alternating_class); ?>">
+                        <thead>
                             <tr>
-                                <?php 
-                                $header_count = count($headers);
-                                for ($i = 0; $i < $header_count; $i++) : 
-                                    $cell_content = isset($cells[$i]) ? $cells[$i] : '';
-                                ?>
-                                    <td><?php echo esc_html($cell_content); ?></td>
-                                <?php endfor; ?>
+                                <?php foreach ($headers as $header) : ?>
+                                    <th><?php echo esc_html($header['header_text']); ?></th>
+                                <?php endforeach; ?>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($rows as $row) : 
+                                $cells = explode(',', $row['row_data']);
+                                $cells = array_map('trim', $cells);
+                            ?>
+                                <tr>
+                                    <?php 
+                                    $header_count = count($headers);
+                                    for ($i = 0; $i < $header_count; $i++) : 
+                                        $cell_content = isset($cells[$i]) ? $cells[$i] : '';
+                                    ?>
+                                        <td><?php echo esc_html($cell_content); ?></td>
+                                    <?php endfor; ?>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
 
-            <!-- Mobile/Tablet Card View -->
-            <div class="table-mobile">
-                <?php foreach ($rows as $row_index => $row) : 
-                    $cells = explode(',', $row['row_data']);
-                    $cells = array_map('trim', $cells);
-                ?>
-                    <div class="table-card">
+                <!-- Mobile/Tablet Card View -->
+                <div class="table-mobile">
+                    <?php foreach ($rows as $row_index => $row) : 
+                        $cells = explode(',', $row['row_data']);
+                        $cells = array_map('trim', $cells);
+                    ?>
+                        <div class="table-card">
+                            <?php 
+                            $header_count = count($headers);
+                            for ($i = 0; $i < $header_count; $i++) : 
+                                $header_text = isset($headers[$i]) ? $headers[$i]['header_text'] : '';
+                                $cell_content = isset($cells[$i]) ? $cells[$i] : '';
+                            ?>
+                                <div class="card-row">
+                                    <div class="card-label"><?php echo esc_html($header_text); ?></div>
+                                    <div class="card-value"><?php echo esc_html($cell_content); ?></div>
+                                </div>
+                            <?php endfor; ?>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+
+            <?php else : ?>
+                <!-- Style 2: Vertical Header Layout -->
+                <!-- Desktop View -->
+                <div class="table-desktop">
+                    <div class="table-style2 <?php echo esc_attr($alternating_class); ?>">
                         <?php 
                         $header_count = count($headers);
                         for ($i = 0; $i < $header_count; $i++) : 
                             $header_text = isset($headers[$i]) ? $headers[$i]['header_text'] : '';
-                            $cell_content = isset($cells[$i]) ? $cells[$i] : '';
                         ?>
-                            <div class="card-row">
-                                <div class="card-label"><?php echo esc_html($header_text); ?></div>
-                                <div class="card-value"><?php echo esc_html($cell_content); ?></div>
+                            <div class="table-row">
+                                <div class="row-header"><?php echo esc_html($header_text); ?></div>
+                                <div class="row-data">
+                                    <?php foreach ($rows as $row_index => $row) : 
+                                        $cells = explode(',', $row['row_data']);
+                                        $cells = array_map('trim', $cells);
+                                        $cell_content = isset($cells[$i]) ? $cells[$i] : '';
+                                    ?>
+                                        <div class="data-cell"><?php echo esc_html($cell_content); ?></div>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
                         <?php endfor; ?>
                     </div>
-                <?php endforeach; ?>
-            </div>
+                </div>
+
+                <!-- Mobile View for Style 2 -->
+                <div class="table-mobile-style2">
+                    <?php foreach ($rows as $row_index => $row) : 
+                        $cells = explode(',', $row['row_data']);
+                        $cells = array_map('trim', $cells);
+                    ?>
+                        <div class="mobile-card">
+                            <div class="mobile-header"><?php echo esc_html($cells[0] ?? ''); ?></div>
+                            <div class="mobile-content">
+                                <?php for ($i = 1; $i < count($cells); $i++) : 
+                                    $header_text = isset($headers[$i]) ? $headers[$i]['header_text'] : '';
+                                    $cell_content = $cells[$i] ?? '';
+                                ?>
+                                    <div class="content-row">
+                                        <span class="content-label"><?php echo esc_html($header_text); ?>:</span>
+                                        <span class="content-value"><?php echo esc_html($cell_content); ?></span>
+                                    </div>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
         </div>
 
         <script>
@@ -725,18 +811,21 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 const tableContainer = document.querySelector('.custom-table-container[data-breakpoint]');
                 if (tableContainer) {
                     const breakpoint = parseInt(tableContainer.dataset.breakpoint);
+                    const tableStyle = tableContainer.dataset.style;
                     
                     function handleResize() {
                         const windowWidth = window.innerWidth;
                         const desktopView = tableContainer.querySelector('.table-desktop');
-                        const mobileView = tableContainer.querySelector('.table-mobile');
+                        const mobileView = tableStyle === 'style1' ? 
+                            tableContainer.querySelector('.table-mobile') :
+                            tableContainer.querySelector('.table-mobile-style2');
                         
                         if (windowWidth <= breakpoint) {
-                            desktopView.style.display = 'none';
-                            mobileView.style.display = 'block';
+                            if (desktopView) desktopView.style.display = 'none';
+                            if (mobileView) mobileView.style.display = 'block';
                         } else {
-                            desktopView.style.display = 'block';
-                            mobileView.style.display = 'none';
+                            if (desktopView) desktopView.style.display = 'block';
+                            if (mobileView) mobileView.style.display = 'none';
                         }
                     }
                     
