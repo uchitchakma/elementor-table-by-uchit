@@ -90,21 +90,21 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'fields' => [
                     [
                         'name' => 'row_data',
-                        'label' => __('Row Data (comma separated)', 'elementor-table-by-uchit'),
+                        'label' => __('Row Data (use /\\ separator)', 'elementor-table-by-uchit'),
                         'type' => \Elementor\Controls_Manager::TEXTAREA,
-                        'default' => __('Cell 1, Cell 2, Cell 3, Cell 4', 'elementor-table-by-uchit'),
-                        'description' => __('Enter data for each cell separated by commas', 'elementor-table-by-uchit'),
+                        'default' => __('Cell 1/\\Cell 2/\\Cell 3/\\Cell 4', 'elementor-table-by-uchit'),
+                        'description' => __('Enter data for each cell separated by /\\ symbol. Example: Year 1/\\10-12 Months/\\ERAU Credits, CPL ( +PPL+IR )/\\200H Flying + 50H Ground', 'elementor-table-by-uchit'),
                     ],
                 ],
                 'default' => [
                     [
-                        'row_data' => __('Year 1, 10-12 Months, ERAU Credits CPL ( +PPL+IR ), 200H Flying + 50H Ground', 'elementor-table-by-uchit'),
+                        'row_data' => __('Year 1/\\10-12 Months/\\ERAU Credits, CPL ( +PPL+IR )/\\200H Flying + 50H Ground', 'elementor-table-by-uchit'),
                     ],
                     [
-                        'row_data' => __('Year 2, 18-24 Months, ERAU Credits CFI, 450-600H Flying + 100H Ground', 'elementor-table-by-uchit'),
+                        'row_data' => __('Year 2/\\18-24 Months/\\ERAU Credits, CFI/\\450-600H Flying + 100H Ground', 'elementor-table-by-uchit'),
                     ],
                     [
-                        'row_data' => __('Year 3, 33-36 Month, Complete ERAU Degree CFII, 600-800H Flying + 200H Ground', 'elementor-table-by-uchit'),
+                        'row_data' => __('Year 3/\\33-36 Month/\\Complete ERAU Degree, CFII/\\600-800H Flying + 200H Ground', 'elementor-table-by-uchit'),
                     ],
                 ],
                 'title_field' => 'Row {{{ _id }}}',
@@ -143,7 +143,9 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                     'size' => 100,
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table-container' => 'width: {{SIZE}}{{UNIT}};',
+                    '{{WRAPPER}} .custom-table-container' => 'width: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .custom-table' => 'width: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-style2' => 'width: {{SIZE}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -155,7 +157,9 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table-container' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .custom-table-container' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .custom-table' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-style2' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -165,7 +169,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'table_border',
                 'label' => __('Border', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .custom-table-container',
+                'selector' => '{{WRAPPER}} .custom-table-container, {{WRAPPER}} .custom-table, {{WRAPPER}} .table-style2',
             ]
         );
 
@@ -176,7 +180,9 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .custom-table-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .custom-table' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-style2' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -186,7 +192,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'table_box_shadow',
                 'label' => __('Box Shadow', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .custom-table-container',
+                'selector' => '{{WRAPPER}} .custom-table-container, {{WRAPPER}} .custom-table, {{WRAPPER}} .table-style2',
             ]
         );
 
@@ -197,7 +203,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .custom-table-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -209,7 +215,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', 'em', '%'],
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table-container' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .custom-table-container' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -225,15 +231,16 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             ]
         );
 
-        $this->add_control(
+         $this->add_control(
             'header_background',
             [
                 'label' => __('Background Color', 'elementor-table-by-uchit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#1e3a8a',
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table thead th' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .table-style2 .table-row .row-header' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .custom-table thead th' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row .row-header' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'background: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -245,18 +252,80 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table thead th' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .table-style2 .table-row .row-header' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .custom-table thead th' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row .row-header' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
 
-        $this->add_group_control(
+       $this->add_group_control(
             \Elementor\Group_Control_Typography::get_type(),
             [
                 'name' => 'header_typography',
                 'label' => __('Typography', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .custom-table thead th, {{WRAPPER}} .table-style2 .table-row .row-header',
+                'selector' => '{{WRAPPER}} .custom-table thead th, {{WRAPPER}} .table-style2 .table-row .row-header, {{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header',
+                'fields_options' => [
+                    'typography' => [
+                        'default' => 'custom',
+                    ],
+                    'font_family' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table thead th' => 'font-family: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-header' => 'font-family: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'font-family: {{VALUE}} !important;',
+                        ],
+                    ],
+                    'font_size' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table thead th' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-header' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                        ],
+                    ],
+                    'font_weight' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table thead th' => 'font-weight: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-header' => 'font-weight: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'font-weight: {{VALUE}} !important;',
+                        ],
+                    ],
+                    'text_transform' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table thead th' => 'text-transform: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-header' => 'text-transform: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'text-transform: {{VALUE}} !important;',
+                        ],
+                    ],
+                    'font_style' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table thead th' => 'font-style: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-header' => 'font-style: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'font-style: {{VALUE}} !important;',
+                        ],
+                    ],
+                    'text_decoration' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table thead th' => 'text-decoration: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-header' => 'text-decoration: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'text-decoration: {{VALUE}} !important;',
+                        ],
+                    ],
+                    'line_height' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table thead th' => 'line-height: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-header' => 'line-height: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'line-height: {{SIZE}}{{UNIT}} !important;',
+                        ],
+                    ],
+                    'letter_spacing' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table thead th' => 'letter-spacing: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-header' => 'letter-spacing: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'letter-spacing: {{SIZE}}{{UNIT}} !important;',
+                        ],
+                    ],
+                ],
             ]
         );
 
@@ -274,8 +343,9 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table thead th' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .table-style2 .table-row .row-header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .custom-table thead th' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row .row-header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -301,8 +371,9 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 ],
                 'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table thead th' => 'text-align: {{VALUE}};',
-                    '{{WRAPPER}} .table-style2 .table-row .row-header' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .custom-table thead th' => 'text-align: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row .row-header' => 'text-align: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'text-align: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -312,7 +383,36 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'header_border',
                 'label' => __('Border', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .custom-table thead th, {{WRAPPER}} .table-style2 .table-row .row-header',
+                'selector' => '{{WRAPPER}} .custom-table thead th, {{WRAPPER}} .table-style2 .table-row .row-header, {{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header',
+            ]
+        );
+
+        $this->add_responsive_control(
+            'header_width_style2',
+            [
+                'label' => __('Header Width (Style 2)', 'elementor-table-by-uchit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px', '%'],
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 500,
+                    ],
+                    '%' => [
+                        'min' => 10,
+                        'max' => 50,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 200,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .table-style2 .table-row .row-header' => 'min-width: {{SIZE}}{{UNIT}} !important; max-width: {{SIZE}}{{UNIT}} !important;',
+                ],
+                'condition' => [
+                    'table_style' => 'style2',
+                ],
             ]
         );
 
@@ -327,7 +427,6 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             ]
         );
 
-        // Normal State
         $this->start_controls_tabs('cell_tabs');
 
         $this->start_controls_tab(
@@ -344,28 +443,31 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table tbody td' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .table-style2 .table-row .row-data' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .custom-table tbody td' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile .table-card' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
 
-        $this->add_control(
+         $this->add_control(
             'cell_text_color',
             [
                 'label' => __('Text Color', 'elementor-table-by-uchit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#333333',
+                'default' => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table tbody td' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .table-style2 .table-row .row-data' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .custom-table tbody td' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile .table-card .card-row .card-value' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-value' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
 
         $this->end_controls_tab();
 
-        // Hover State
         $this->start_controls_tab(
             'cell_hover',
             [
@@ -373,14 +475,16 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             ]
         );
 
-        $this->add_control(
+         $this->add_control(
             'cell_background_hover',
             [
                 'label' => __('Background Color', 'elementor-table-by-uchit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table tbody tr:hover td' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .table-style2 .table-row:hover .row-data' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .custom-table tbody tr:hover td' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row:hover .row-data .data-cell' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile .table-card:hover' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card:hover .mobile-content' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -391,8 +495,10 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'label' => __('Text Color', 'elementor-table-by-uchit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table tbody tr:hover td' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .table-style2 .table-row:hover .row-data' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .custom-table tbody tr:hover td' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row:hover .row-data .data-cell' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile .table-card:hover .card-row .card-value' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card:hover .mobile-content .content-value' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -406,8 +512,77 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'cell_typography',
                 'label' => __('Typography', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .custom-table tbody td, {{WRAPPER}} .table-style2 .table-row .row-data',
+                'selector' => '{{WRAPPER}} .custom-table tbody td, {{WRAPPER}} .table-style2 .table-row .row-data .data-cell, {{WRAPPER}} .table-mobile .table-card .card-row .card-value, {{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-value',
                 'separator' => 'before',
+                'fields_options' => [
+                    'typography' => [
+                        'default' => 'custom',
+                    ],
+                    'font_family' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table tbody td' => 'font-family: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'font-family: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile .table-card .card-row .card-value' => 'font-family: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-value' => 'font-family: {{VALUE}} !important;',
+                        ],
+                    ],
+                    'font_size' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table tbody td' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-mobile .table-card .card-row .card-value' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-value' => 'font-size: {{SIZE}}{{UNIT}} !important;',
+                        ],
+                    ],
+                    'font_weight' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table tbody td' => 'font-weight: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'font-weight: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile .table-card .card-row .card-value' => 'font-weight: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-value' => 'font-weight: {{VALUE}} !important;',
+                        ],
+                    ],
+                    'text_transform' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table tbody td' => 'text-transform: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'text-transform: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile .table-card .card-row .card-value' => 'text-transform: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-value' => 'text-transform: {{VALUE}} !important;',
+                        ],
+                    ],
+                    'font_style' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table tbody td' => 'font-style: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'font-style: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile .table-card .card-row .card-value' => 'font-style: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-value' => 'font-style: {{VALUE}} !important;',
+                        ],
+                    ],
+                    'text_decoration' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table tbody td' => 'text-decoration: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'text-decoration: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile .table-card .card-row .card-value' => 'text-decoration: {{VALUE}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-value' => 'text-decoration: {{VALUE}} !important;',
+                        ],
+                    ],
+                    'line_height' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table tbody td' => 'line-height: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'line-height: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-mobile .table-card .card-row .card-value' => 'line-height: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-value' => 'line-height: {{SIZE}}{{UNIT}} !important;',
+                        ],
+                    ],
+                    'letter_spacing' => [
+                        'selectors' => [
+                            '{{WRAPPER}} .custom-table tbody td' => 'letter-spacing: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'letter-spacing: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-mobile .table-card .card-row .card-value' => 'letter-spacing: {{SIZE}}{{UNIT}} !important;',
+                            '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-value' => 'letter-spacing: {{SIZE}}{{UNIT}} !important;',
+                        ],
+                    ],
+                ],
             ]
         );
 
@@ -425,8 +600,10 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table tbody td' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .table-style2 .table-row .row-data' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .custom-table tbody td' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-mobile .table-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -452,8 +629,10 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 ],
                 'default' => 'left',
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table tbody td' => 'text-align: {{VALUE}};',
-                    '{{WRAPPER}} .table-style2 .table-row .row-data' => 'text-align: {{VALUE}};',
+                    '{{WRAPPER}} .custom-table tbody td' => 'text-align: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'text-align: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile .table-card .card-row .card-value' => 'text-align: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-value' => 'text-align: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -463,7 +642,84 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'cell_border',
                 'label' => __('Border', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .custom-table tbody td, {{WRAPPER}} .table-style2 .table-row .row-data',
+                'selector' => '{{WRAPPER}} .custom-table tbody td, {{WRAPPER}} .table-style2 .table-row .row-data .data-cell, {{WRAPPER}} .table-mobile .table-card, {{WRAPPER}} .table-mobile-style2 .mobile-card',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Row Spacing & Borders
+        $this->start_controls_section(
+            'row_style',
+            [
+                'label' => __('Row Style', 'elementor-table-by-uchit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_responsive_control(
+            'row_gap',
+            [
+                'label' => __('Row Gap', 'elementor-table-by-uchit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 50,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 0,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .custom-table tbody tr' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-mobile .table-card' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'row_border_color',
+            [
+                'label' => __('Row Border Color', 'elementor-table-by-uchit'),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#e5e7eb',
+                'selectors' => [
+                    '{{WRAPPER}} .custom-table tbody td' => 'border-bottom-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'border-right-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row' => 'border-bottom-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile .table-card .card-row' => 'border-bottom-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-row' => 'border-bottom-color: {{VALUE}} !important;',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'row_border_width',
+            [
+                'label' => __('Row Border Width', 'elementor-table-by-uchit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => ['px'],
+                'range' => [
+                    'px' => [
+                        'min' => 0,
+                        'max' => 10,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 1,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .custom-table tbody td' => 'border-bottom-width: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-style2 .table-row .row-data .data-cell' => 'border-right-width: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-mobile .table-card .card-row' => 'border-bottom-width: {{SIZE}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-row' => 'border-bottom-width: {{SIZE}}{{UNIT}} !important;',
+                ],
             ]
         );
 
@@ -497,8 +753,8 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f8f9fa',
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table.alternating-rows tbody tr:nth-child(odd) td' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .table-style2.alternating-rows .table-row:nth-child(odd) .row-data' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .custom-table.alternating-rows tbody tr:nth-child(odd) td' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-style2.alternating-rows .table-row:nth-child(odd) .row-data .data-cell' => 'background-color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'enable_alternating_rows' => 'yes',
@@ -513,8 +769,8 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#ffffff',
                 'selectors' => [
-                    '{{WRAPPER}} .custom-table.alternating-rows tbody tr:nth-child(even) td' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .table-style2.alternating-rows .table-row:nth-child(even) .row-data' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .custom-table.alternating-rows tbody tr:nth-child(even) td' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-style2.alternating-rows .table-row:nth-child(even) .row-data .data-cell' => 'background-color: {{VALUE}} !important;',
                 ],
                 'condition' => [
                     'enable_alternating_rows' => 'yes',
@@ -558,8 +814,8 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::COLOR,
                 'default' => '#f8f9fa',
                 'selectors' => [
-                    '{{WRAPPER}} .table-mobile .table-card' => 'background-color: {{VALUE}};',
-                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'background-color: {{VALUE}};',
+                    '{{WRAPPER}} .table-mobile .table-card' => 'background-color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'background-color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -578,8 +834,8 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .table-mobile .table-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .table-mobile .table-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -598,8 +854,8 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .table-mobile .table-card' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .table-mobile .table-card' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -620,15 +876,15 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 'type' => \Elementor\Controls_Manager::DIMENSIONS,
                 'size_units' => ['px', '%'],
                 'default' => [
-                    'top' => 8,
-                    'right' => 8,
-                    'bottom' => 8,
-                    'left' => 8,
+                    'top' => 12,
+                    'right' => 12,
+                    'bottom' => 12,
+                    'left' => 12,
                     'unit' => 'px',
                 ],
                 'selectors' => [
-                    '{{WRAPPER}} .table-mobile .table-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                    '{{WRAPPER}} .table-mobile .table-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}} !important;',
                 ],
             ]
         );
@@ -647,10 +903,10 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'label' => __('Label Color', 'elementor-table-by-uchit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#333333',
+                'default' => '#374151',
                 'selectors' => [
-                    '{{WRAPPER}} .table-mobile .table-card .card-row .card-label' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .table-mobile .table-card .card-row .card-label' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-label' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -660,7 +916,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'mobile_label_typography',
                 'label' => __('Label Typography', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .table-mobile .table-card .card-row .card-label, {{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-header',
+                'selector' => '{{WRAPPER}} .table-mobile .table-card .card-row .card-label, {{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-label',
             ]
         );
 
@@ -669,10 +925,10 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'label' => __('Value Color', 'elementor-table-by-uchit'),
                 'type' => \Elementor\Controls_Manager::COLOR,
-                'default' => '#666666',
+                'default' => '#6b7280',
                 'selectors' => [
-                    '{{WRAPPER}} .table-mobile .table-card .card-row .card-value' => 'color: {{VALUE}};',
-                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content' => 'color: {{VALUE}};',
+                    '{{WRAPPER}} .table-mobile .table-card .card-row .card-value' => 'color: {{VALUE}} !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-value' => 'color: {{VALUE}} !important;',
                 ],
             ]
         );
@@ -682,7 +938,81 @@ class CustomTableWidget extends \Elementor\Widget_Base {
             [
                 'name' => 'mobile_value_typography',
                 'label' => __('Value Typography', 'elementor-table-by-uchit'),
-                'selector' => '{{WRAPPER}} .table-mobile .table-card .card-row .card-value, {{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content',
+                'selector' => '{{WRAPPER}} .table-mobile .table-card .card-row .card-value, {{WRAPPER}} .table-mobile-style2 .mobile-card .mobile-content .content-value',
+            ]
+        );
+
+        $this->end_controls_section();
+
+        // Animation & Effects
+        $this->start_controls_section(
+            'animation_style',
+            [
+                'label' => __('Animation & Effects', 'elementor-table-by-uchit'),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+            ]
+        );
+
+        $this->add_control(
+            'enable_hover_effects',
+            [
+                'label' => __('Enable Hover Effects', 'elementor-table-by-uchit'),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => __('Yes', 'elementor-table-by-uchit'),
+                'label_off' => __('No', 'elementor-table-by-uchit'),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'hover_animation_duration',
+            [
+                'label' => __('Hover Animation Duration (ms)', 'elementor-table-by-uchit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 100,
+                        'max' => 1000,
+                    ],
+                ],
+                'default' => [
+                    'size' => 200,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .custom-table tbody tr' => 'transition: all {{SIZE}}ms ease !important;',
+                    '{{WRAPPER}} .table-style2 .table-row' => 'transition: all {{SIZE}}ms ease !important;',
+                    '{{WRAPPER}} .table-mobile .table-card' => 'transition: all {{SIZE}}ms ease !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card' => 'transition: all {{SIZE}}ms ease !important;',
+                ],
+                'condition' => [
+                    'enable_hover_effects' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'hover_transform_scale',
+            [
+                'label' => __('Hover Scale', 'elementor-table-by-uchit'),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0.9,
+                        'max' => 1.1,
+                        'step' => 0.01,
+                    ],
+                ],
+                'default' => [
+                    'size' => 1.02,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .table-mobile .table-card:hover' => 'transform: scale({{SIZE}}) !important;',
+                    '{{WRAPPER}} .table-mobile-style2 .mobile-card:hover' => 'transform: scale({{SIZE}}) !important;',
+                ],
+                'condition' => [
+                    'enable_hover_effects' => 'yes',
+                ],
             ]
         );
 
@@ -715,7 +1045,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                         </thead>
                         <tbody>
                             <?php foreach ($rows as $row) : 
-                                $cells = explode(',', $row['row_data']);
+                                $cells = explode('/\\', $row['row_data']);
                                 $cells = array_map('trim', $cells);
                             ?>
                                 <tr>
@@ -735,7 +1065,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                 <!-- Mobile/Tablet Card View -->
                 <div class="table-mobile">
                     <?php foreach ($rows as $row_index => $row) : 
-                        $cells = explode(',', $row['row_data']);
+                        $cells = explode('/\\', $row['row_data']);
                         $cells = array_map('trim', $cells);
                     ?>
                         <div class="table-card">
@@ -768,7 +1098,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                                 <div class="row-header"><?php echo esc_html($header_text); ?></div>
                                 <div class="row-data">
                                     <?php foreach ($rows as $row_index => $row) : 
-                                        $cells = explode(',', $row['row_data']);
+                                        $cells = explode('/\\', $row['row_data']);
                                         $cells = array_map('trim', $cells);
                                         $cell_content = isset($cells[$i]) ? $cells[$i] : '';
                                     ?>
@@ -782,31 +1112,37 @@ class CustomTableWidget extends \Elementor\Widget_Base {
 
                 <!-- Mobile View for Style 2 -->
                 <div class="table-mobile-style2">
-                    <?php foreach ($rows as $row_index => $row) : 
-                        $cells = explode(',', $row['row_data']);
-                        $cells = array_map('trim', $cells);
+                    <?php 
+                    // Loop through each header to create cards
+                    $header_count = count($headers);
+                    for ($i = 0; $i < $header_count; $i++) : 
+                        $header_text = isset($headers[$i]) ? $headers[$i]['header_text'] : '';
                     ?>
                         <div class="mobile-card">
-                            <div class="mobile-header"><?php echo esc_html($cells[0] ?? ''); ?></div>
+                            <!-- Card Header - The header text -->
+                            <div class="mobile-header">
+                                <?php echo esc_html($header_text); ?>
+                            </div>
+                            
+                            <!-- Card Content - All cells for this row -->
                             <div class="mobile-content">
-                                <?php for ($i = 1; $i < count($cells); $i++) : 
-                                    $header_text = isset($headers[$i]) ? $headers[$i]['header_text'] : '';
-                                    $cell_content = $cells[$i] ?? '';
+                                <?php 
+                                // Loop through each row (column in desktop) to get cells
+                                foreach ($rows as $row_index => $row) : 
+                                    $cells = explode('/\\', $row['row_data']);
+                                    $cells = array_map('trim', $cells);
+                                    $cell_content = isset($cells[$i]) ? $cells[$i] : '';
                                 ?>
-                                    <div class="content-row">
-                                        <span class="content-label"><?php echo esc_html($header_text); ?>:</span>
-                                        <span class="content-value"><?php echo esc_html($cell_content); ?></span>
-                                    </div>
-                                <?php endfor; ?>
+                                    <div class="content-value"><?php echo esc_html($cell_content); ?></div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    <?php endfor; ?>
                 </div>
             <?php endif; ?>
         </div>
 
         <script>
-            // Add responsive behavior
             document.addEventListener('DOMContentLoaded', function() {
                 const tableContainer = document.querySelector('.custom-table-container[data-breakpoint]');
                 if (tableContainer) {
@@ -829,10 +1165,7 @@ class CustomTableWidget extends \Elementor\Widget_Base {
                         }
                     }
                     
-                    // Initial check
                     handleResize();
-                    
-                    // Listen for window resize
                     window.addEventListener('resize', handleResize);
                 }
             });

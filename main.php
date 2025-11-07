@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Elementor Table By Uchit
  * Description: Advanced responsive table widget for Elementor with extensive styling options
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Uchit Chakma
  * License: GPLv2 or later
  */
@@ -19,6 +19,13 @@ class ElementorCustomTable {
     public function __construct() {
         add_action('init', array($this, 'init'));
         add_action('admin_menu', array($this, 'add_admin_menu'));
+        
+        // Force CSS loading with higher priority
+        add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'), 999);
+        add_action('elementor/frontend/after_enqueue_styles', array($this, 'enqueue_styles'), 999);
+        
+        // Add inline CSS as backup
+        add_action('wp_head', array($this, 'add_inline_css'), 999);
     }
     
     public function init() {
@@ -30,10 +37,6 @@ class ElementorCustomTable {
         
         // Register widget
         add_action('elementor/widgets/register', array($this, 'register_widgets'));
-        
-        // Enqueue styles and scripts
-        add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
-        add_action('elementor/frontend/after_enqueue_styles', array($this, 'enqueue_styles'));
     }
     
     public function admin_notice_missing_main_plugin() {
@@ -48,13 +51,13 @@ class ElementorCustomTable {
     
     public function add_admin_menu() {
         add_menu_page(
-            __('Table by Uchit', 'elementor-table-by-uchit'),           // Page title
-            __('Table by Uchit', 'elementor-table-by-uchit'),           // Menu title
-            'manage_options',                                             // Capability
-            'table-by-uchit',                                            // Menu slug
-            array($this, 'admin_page_content'),                          // Function callback
-            'dashicons-grid-view',                                       // Icon
-            30                                                           // Position
+            __('Table by Uchit', 'elementor-table-by-uchit'),
+            __('Table by Uchit', 'elementor-table-by-uchit'),
+            'manage_options',
+            'table-by-uchit',
+            array($this, 'admin_page_content'),
+            'dashicons-grid-view',
+            30
         );
     }
     
@@ -116,7 +119,7 @@ class ElementorCustomTable {
                         Find the "Table by Uchit" widget in your Elementor editor under the General category.
                     </p>
                     <p style="color: #999; font-size: 0.9em; margin: 0;">
-                        Plugin Version 1.0.0 | Created by <a href="https://uchitchakma.com" target="_blank" style="color: #1e3a8a; text-decoration: none;">Uchit Chakma</a>
+                        Plugin Version 1.0.1 | Created by <a href="https://uchitchakma.com" target="_blank" style="color: #1e3a8a; text-decoration: none;">Uchit Chakma</a>
                     </p>
                 </div>
             </div>
@@ -139,22 +142,182 @@ class ElementorCustomTable {
     }
     
     public function enqueue_scripts() {
+        // Use plugin_dir_url with version for cache busting
         wp_enqueue_script(
             'elementor-table-script',
             plugin_dir_url(__FILE__) . 'assets/js/main.js',
             array('jquery'),
-            '1.0.0',
+            '1.0.1',
             true
         );
     }
     
     public function enqueue_styles() {
+        // Enqueue CSS with high priority and version for cache busting
         wp_enqueue_style(
             'elementor-table-style',
             plugin_dir_url(__FILE__) . 'assets/css/style.css',
             array(),
-            '1.0.0'
+            '1.0.1'
         );
+    }
+    
+    // Add inline CSS as backup to ensure styles are applied
+    public function add_inline_css() {
+        if (!$this->should_load_styles()) {
+            return;
+        }
+        
+        ?>
+        <style id="elementor-table-backup-css">
+        /* Backup Critical CSS - Higher Specificity */
+        .elementor-widget-custom-table .custom-table-container {
+            position: relative !important;
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+        }
+        
+        .elementor-widget-custom-table .table-desktop {
+            display: block !important;
+            overflow-x: auto !important;
+        }
+        
+        .elementor-widget-custom-table .custom-table {
+            width: 100% !important;
+            border-collapse: separate !important;
+            border-spacing: 0 !important;
+            margin: 0 !important;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+        }
+        
+        .elementor-widget-custom-table .custom-table thead th {
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            padding: 15px 20px !important;
+            text-align: left !important;
+            border: none !important;
+            position: relative !important;
+            white-space: nowrap !important;
+            vertical-align: middle !important;
+        }
+        
+        .elementor-widget-custom-table .custom-table thead th:first-child {
+            border-top-left-radius: 8px !important;
+        }
+        
+        .elementor-widget-custom-table .custom-table thead th:last-child {
+            border-top-right-radius: 8px !important;
+        }
+        
+        .elementor-widget-custom-table .custom-table tbody td {
+            padding: 12px 20px !important;
+            border-bottom: 1px solid #e5e7eb !important;
+            color: #374151 !important;
+            font-size: 14px !important;
+            line-height: 1.5 !important;
+            vertical-align: middle !important;
+            background-color: #ffffff !important;
+        }
+        
+        /* Style 2 Critical Styles */
+        .elementor-widget-custom-table .table-style2 {
+            display: flex !important;
+            flex-direction: column !important;
+            border: 1px solid #e5e7eb !important;
+            border-radius: 8px !important;
+            overflow: hidden !important;
+        }
+        
+        .elementor-widget-custom-table .table-style2 .table-row {
+            display: flex !important;
+        }
+        
+        .elementor-widget-custom-table .table-style2 .table-row .row-header {
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            padding: 15px 20px !important;
+            min-width: 200px !important;
+            max-width: 200px !important;
+            flex-shrink: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+        
+        .elementor-widget-custom-table .table-style2 .table-row .row-data {
+            display: flex !important;
+            flex: 1 !important;
+            background-color: #ffffff !important;
+        }
+        
+        .elementor-widget-custom-table .table-style2 .table-row .row-data .data-cell {
+            flex: 1 !important;
+            padding: 15px 20px !important;
+            border-right: 1px solid #e5e7eb !important;
+            color: #374151 !important;
+            font-size: 14px !important;
+            display: flex !important;
+            align-items: center !important;
+        }
+        
+        .elementor-widget-custom-table .table-style2 .table-row .row-data .data-cell:last-child {
+            border-right: none !important;
+        }
+        
+        /* Mobile Styles */
+        .elementor-widget-custom-table .table-mobile {
+            display: none !important;
+        }
+        
+        .elementor-widget-custom-table .table-mobile-style2 {
+            display: none !important;
+        }
+        
+        @media (max-width: 768px) {
+            .elementor-widget-custom-table .table-desktop {
+                display: none !important;
+            }
+            
+            .elementor-widget-custom-table .table-style1 .table-mobile {
+                display: block !important;
+            }
+            
+            .elementor-widget-custom-table .table-style2 .table-mobile-style2 {
+                display: block !important;
+            }
+        }
+        </style>
+        <?php
+    }
+    
+    private function should_load_styles() {
+        // Only load on pages with Elementor content
+        global $post;
+        
+        if (is_admin()) {
+            return false;
+        }
+        
+        // Load if we're in Elementor editor
+        if (isset($_GET['elementor-preview'])) {
+            return true;
+        }
+        
+        // Load if current post/page uses Elementor
+        if ($post && get_post_meta($post->ID, '_elementor_edit_mode', true)) {
+            return true;
+        }
+        
+        // Load if any post on current page uses our widget
+        if (is_singular() && $post) {
+            $content = get_post_field('post_content', $post->ID);
+            return (strpos($content, 'custom-table') !== false);
+        }
+        
+        return false;
     }
 }
 

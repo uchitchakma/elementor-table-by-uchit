@@ -231,7 +231,7 @@
 }
 
 .table-mobile-style2 .mobile-card {
-    background-color: #f8f9fa;
+    background-color: #ffffff;
     border: 1px solid #e5e7eb;
     border-radius: 12px;
     margin-bottom: 16px;
@@ -255,7 +255,7 @@
     position: relative;
 }
 
-.table-mobile-style2 .mobile-card .mobile-header::after {
+/* .table-mobile-style2 .mobile-card .mobile-header::after {
     content: '';
     position: absolute;
     bottom: -10px;
@@ -266,11 +266,11 @@
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-top: 10px solid #1e3a8a;
-}
+} */
 
-.table-mobile-style2 .mobile-card .mobile-content {
-    padding: 20px;
-    background-color: #ffffff;
+
+.table-mobile-style2 .mobile-card .mobile-section {
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .table-mobile-style2 .mobile-card .mobile-content .content-row {
@@ -326,19 +326,22 @@
 
 @media (max-width: 768px) {
     .table-desktop {
-        display: none !important;
+        display: none;
     }
     
     .table-style1 .table-mobile {
-        display: block !important;
+        display: block;
     }
     
     .table-style2 .table-mobile-style2 {
-        display: block !important;
+        display: block;
+    }
+    .table-mobile .table-card .card-row .card-value{
+        flex-grow: 0;
     }
     
     .table-mobile .table-card .card-row {
-        flex-direction: column;
+        flex-direction: row;
         align-items: flex-start;
         gap: 4px;
     }
@@ -466,12 +469,12 @@
 /* Print Styles */
 @media print {
     .table-desktop {
-        display: block !important;
+        display: block;
     }
     
     .table-mobile,
     .table-mobile-style2 {
-        display: none !important;
+        display: none;
     }
     
     .custom-table {
@@ -523,5 +526,212 @@
     .table-style2 .table-row .row-header,
     .table-style2 .table-row .row-data .data-cell {
         border: 1px solid #666;
+    }
+}
+
+/* Higher Specificity Base Selectors */
+.elementor-widget-custom-table .custom-table-container,
+body .elementor-widget-custom-table .custom-table-container,
+.elementor .elementor-widget-custom-table .custom-table-container {
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* STYLE 1: Traditional Table Layout */
+.elementor-widget-custom-table .table-desktop,
+body .elementor-widget-custom-table .table-desktop {
+    display: block;
+    overflow-x: auto;
+}
+
+.elementor-widget-custom-table .custom-table,
+body .elementor-widget-custom-table .custom-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Header Styles with Higher Specificity */
+.elementor-widget-custom-table .custom-table thead,
+body .elementor-widget-custom-table .custom-table thead {
+    position: relative;
+}
+
+.elementor-widget-custom-table .custom-table thead th,
+body .elementor-widget-custom-table .custom-table thead th,
+.elementor .elementor-widget-custom-table .custom-table thead th {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 15px 20px;
+    text-align: left;
+    border: none;
+    position: relative;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+
+.elementor-widget-custom-table .custom-table thead th:first-child,
+body .elementor-widget-custom-table .custom-table thead th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.elementor-widget-custom-table .custom-table thead th:last-child,
+body .elementor-widget-custom-table .custom-table thead th:last-child {
+    border-top-right-radius: 8px;
+}
+
+/* Body Styles with Higher Specificity */
+.elementor-widget-custom-table .custom-table tbody,
+body .elementor-widget-custom-table .custom-table tbody {
+    background-color: #ffffff;
+}
+
+.elementor-widget-custom-table .custom-table tbody td,
+body .elementor-widget-custom-table .custom-table tbody td,
+.elementor .elementor-widget-custom-table .custom-table tbody td {
+    padding: 12px 20px;
+    border-bottom: 1px solid #e5e7eb;
+    color: #374151;
+    font-size: 14px;
+    line-height: 1.5;
+    vertical-align: middle;
+    transition: all 0.2s ease;
+    background-color: #ffffff;
+}
+
+.elementor-widget-custom-table .custom-table tbody tr:last-child td:first-child,
+body .elementor-widget-custom-table .custom-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+
+.elementor-widget-custom-table .custom-table tbody tr:last-child td:last-child,
+body .elementor-widget-custom-table .custom-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+/* Hover Effects with Higher Specificity */
+.elementor-widget-custom-table .custom-table tbody tr,
+body .elementor-widget-custom-table .custom-table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.elementor-widget-custom-table .custom-table tbody tr:hover,
+body .elementor-widget-custom-table .custom-table tbody tr:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.elementor-widget-custom-table .custom-table tbody tr:hover td,
+body .elementor-widget-custom-table .custom-table tbody tr:hover td {
+    background-color: #f9fafb;
+}
+
+/* STYLE 2: Vertical Header Layout with Higher Specificity */
+.elementor-widget-custom-table .table-style2,
+body .elementor-widget-custom-table .table-style2,
+.elementor .elementor-widget-custom-table .table-style2 {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.elementor-widget-custom-table .table-style2 .table-row,
+body .elementor-widget-custom-table .table-style2 .table-row {
+    display: flex;
+    transition: all 0.2s ease;
+}
+
+.elementor-widget-custom-table .table-style2 .table-row:hover,
+body .elementor-widget-custom-table .table-style2 .table-row:hover {
+    transform: translateX(2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.elementor-widget-custom-table .table-style2 .table-row .row-header,
+body .elementor-widget-custom-table .table-style2 .table-row .row-header,
+.elementor .elementor-widget-custom-table .table-style2 .table-row .row-header {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 15px 20px;
+    text-align: left;
+    border: none;
+    min-width: 200px;
+    max-width: 200px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.elementor-widget-custom-table .table-style2 .table-row .row-data,
+body .elementor-widget-custom-table .table-style2 .table-row .row-data {
+    display: flex;
+    flex: 1;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.elementor-widget-custom-table .table-style2 .table-row .row-data .data-cell,
+body .elementor-widget-custom-table .table-style2 .table-row .row-data .data-cell,
+.elementor .elementor-widget-custom-table .table-style2 .table-row .row-data .data-cell {
+    flex: 1;
+    padding: 15px 20px;
+    border-right: 1px solid #e5e7eb;
+    color: #374151;
+    font-size: 14px;
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease;
+    background-color: #ffffff;
+}
+
+.elementor-widget-custom-table .table-style2 .table-row .row-data .data-cell:last-child,
+body .elementor-widget-custom-table .table-style2 .table-row .row-data .data-cell:last-child {
+    border-right: none;
+}
+
+.elementor-widget-custom-table .table-style2 .table-row:last-child .row-header,
+.elementor-widget-custom-table .table-style2 .table-row:last-child .row-data,
+body .elementor-widget-custom-table .table-style2 .table-row:last-child .row-header,
+body .elementor-widget-custom-table .table-style2 .table-row:last-child .row-data {
+    border-bottom: none;
+}
+
+/* Mobile Styles with Higher Specificity */
+.elementor-widget-custom-table .table-mobile,
+body .elementor-widget-custom-table .table-mobile {
+    display: none;
+}
+
+.elementor-widget-custom-table .table-mobile-style2,
+body .elementor-widget-custom-table .table-mobile-style2 {
+    display: none;
+}
+
+/* Responsive Breakpoints with Higher Specificity */
+@media (max-width: 768px) {
+    .elementor-widget-custom-table .table-desktop,
+    body .elementor-widget-custom-table .table-desktop {
+        display: none;
+    }
+    
+    .elementor-widget-custom-table .table-style1 .table-mobile,
+    body .elementor-widget-custom-table .table-style1 .table-mobile {
+        display: block;
+    }
+    
+    .elementor-widget-custom-table .table-style2 .table-mobile-style2,
+    body .elementor-widget-custom-table .table-style2 .table-mobile-style2 {
+        display: block;
     }
 }
