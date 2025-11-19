@@ -529,7 +529,7 @@
     }
 }
 
-/* Higher Specificity Base Selectors */
+/* Higher Specificity Base Selectors - WITHOUT !important for typography */
 .elementor-widget-custom-table .custom-table-container,
 body .elementor-widget-custom-table .custom-table-container,
 .elementor .elementor-widget-custom-table .custom-table-container {
@@ -551,10 +551,9 @@ body .elementor-widget-custom-table .custom-table {
     border-collapse: separate;
     border-spacing: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Header Styles with Higher Specificity */
+/* Header Styles - Allow typography override */
 .elementor-widget-custom-table .custom-table thead,
 body .elementor-widget-custom-table .custom-table thead {
     position: relative;
@@ -573,6 +572,8 @@ body .elementor-widget-custom-table .custom-table thead th,
     position: relative;
     white-space: nowrap;
     vertical-align: middle;
+    /* Remove !important from typography properties */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .elementor-widget-custom-table .custom-table thead th:first-child,
@@ -585,7 +586,7 @@ body .elementor-widget-custom-table .custom-table thead th:last-child {
     border-top-right-radius: 8px;
 }
 
-/* Body Styles with Higher Specificity */
+/* Body Styles - Allow typography override */
 .elementor-widget-custom-table .custom-table tbody,
 body .elementor-widget-custom-table .custom-table tbody {
     background-color: #ffffff;
@@ -602,36 +603,11 @@ body .elementor-widget-custom-table .custom-table tbody td,
     vertical-align: middle;
     transition: all 0.2s ease;
     background-color: #ffffff;
+    /* Remove !important from typography properties */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-.elementor-widget-custom-table .custom-table tbody tr:last-child td:first-child,
-body .elementor-widget-custom-table .custom-table tbody tr:last-child td:first-child {
-    border-bottom-left-radius: 8px;
-}
-
-.elementor-widget-custom-table .custom-table tbody tr:last-child td:last-child,
-body .elementor-widget-custom-table .custom-table tbody tr:last-child td:last-child {
-    border-bottom-right-radius: 8px;
-}
-
-/* Hover Effects with Higher Specificity */
-.elementor-widget-custom-table .custom-table tbody tr,
-body .elementor-widget-custom-table .custom-table tbody tr {
-    transition: all 0.2s ease;
-}
-
-.elementor-widget-custom-table .custom-table tbody tr:hover,
-body .elementor-widget-custom-table .custom-table tbody tr:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.elementor-widget-custom-table .custom-table tbody tr:hover td,
-body .elementor-widget-custom-table .custom-table tbody tr:hover td {
-    background-color: #f9fafb;
-}
-
-/* STYLE 2: Vertical Header Layout with Higher Specificity */
+/* Style 2 - Allow typography override */
 .elementor-widget-custom-table .table-style2,
 body .elementor-widget-custom-table .table-style2,
 .elementor .elementor-widget-custom-table .table-style2 {
@@ -646,12 +622,6 @@ body .elementor-widget-custom-table .table-style2,
 body .elementor-widget-custom-table .table-style2 .table-row {
     display: flex;
     transition: all 0.2s ease;
-}
-
-.elementor-widget-custom-table .table-style2 .table-row:hover,
-body .elementor-widget-custom-table .table-style2 .table-row:hover {
-    transform: translateX(2px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .elementor-widget-custom-table .table-style2 .table-row .row-header,
@@ -670,14 +640,8 @@ body .elementor-widget-custom-table .table-style2 .table-row .row-header,
     display: flex;
     align-items: center;
     border-bottom: 1px solid #e5e7eb;
-}
-
-.elementor-widget-custom-table .table-style2 .table-row .row-data,
-body .elementor-widget-custom-table .table-style2 .table-row .row-data {
-    display: flex;
-    flex: 1;
-    background-color: #ffffff;
-    border-bottom: 1px solid #e5e7eb;
+    /* Remove !important from typography properties */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 .elementor-widget-custom-table .table-style2 .table-row .row-data .data-cell,
@@ -693,32 +657,50 @@ body .elementor-widget-custom-table .table-style2 .table-row .row-data .data-cel
     align-items: center;
     transition: all 0.2s ease;
     background-color: #ffffff;
+    /* Remove !important from typography properties */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-.elementor-widget-custom-table .table-style2 .table-row .row-data .data-cell:last-child,
-body .elementor-widget-custom-table .table-style2 .table-row .row-data .data-cell:last-child {
-    border-right: none;
+/* Style 3 - Allow typography override */
+.table-style3 .table-header-row .header-cell {
+    flex: 1;
+    padding: 15px 20px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Remove !important from typography properties */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-.elementor-widget-custom-table .table-style2 .table-row:last-child .row-header,
-.elementor-widget-custom-table .table-style2 .table-row:last-child .row-data,
-body .elementor-widget-custom-table .table-style2 .table-row:last-child .row-header,
-body .elementor-widget-custom-table .table-style2 .table-row:last-child .row-data {
-    border-bottom: none;
+.table-style3 .table-data-row .data-cell {
+    flex: 1;
+    padding: 15px 20px;
+    color: #374151;
+    background-color: #ffffff;
+    font-size: 14px;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* Remove !important from typography properties */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Mobile Styles with Higher Specificity */
-.elementor-widget-custom-table .table-mobile,
-body .elementor-widget-custom-table .table-mobile {
-    display: none;
+.table-style3 .table-data-row .data-cell.row-header-cell {
+    background-color: #1e3a8a;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 16px;
+    justify-content: flex-start;
 }
 
-.elementor-widget-custom-table .table-mobile-style2,
-body .elementor-widget-custom-table .table-mobile-style2 {
-    display: none;
-}
-
-/* Responsive Breakpoints with Higher Specificity */
+/* Mobile/Responsive with lower specificity for custom CSS override */
 @media (max-width: 768px) {
     .elementor-widget-custom-table .table-desktop,
     body .elementor-widget-custom-table .table-desktop {
@@ -734,4 +716,226 @@ body .elementor-widget-custom-table .table-mobile-style2 {
     body .elementor-widget-custom-table .table-style2 .table-mobile-style2 {
         display: block;
     }
+    
+    .elementor-widget-custom-table .table-style3 .table-mobile-style3,
+    body .elementor-widget-custom-table .table-style3 .table-mobile-style3 {
+        display: block;
+    }
+}
+
+
+/* ============================================
+   STYLE 3: DOUBLE HEADER TABLE
+   ============================================ */
+
+/* Desktop Version - Style 3 */
+.table-style3 .table-desktop {
+    display: block;
+}
+
+.table-style3 .table-mobile {
+    display: none;
+}
+
+.table-style3 .table-style3-wrapper {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+/* Header Row (Top Row - r1) - DEFAULT COLORS, CAN BE OVERRIDDEN */
+.table-style3 .table-header-row {
+    display: flex;
+    background-color: #1e3a8a; /* Default - Elementor can override */
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.table-style3 .table-header-row .header-cell {
+    flex: 1;
+    padding: 15px 20px;
+    color: #ffffff; /* Default - Elementor can override */
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-style3 .table-header-row .header-cell:last-child {
+    border-right: none;
+}
+
+/* Data Rows */
+.table-style3 .table-data-row {
+    display: flex;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table-style3 .table-data-row:last-child {
+    border-bottom: none;
+}
+
+.table-style3 .table-data-row:hover {
+    background-color: #f9fafb;
+}
+
+.table-style3 .table-data-row .data-cell {
+    flex: 1;
+    padding: 15px 20px;
+    color: #374151; /* Default - Elementor can override */
+    background-color: #ffffff; /* Default - Elementor can override */
+    font-size: 14px;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.table-style3 .table-data-row .data-cell:last-child {
+    border-right: none;
+}
+
+/* First column in data rows (row headers - c1) - DEFAULT COLORS */
+.table-style3 .table-data-row .data-cell.row-header-cell {
+    background-color: #1e3a8a; /* Default - Elementor can override */
+    color: #ffffff; /* Default - Elementor can override */
+    font-weight: 600;
+    font-size: 16px;
+    justify-content: flex-start;
+}
+
+/* Mobile Version - Style 3 */
+.table-style3 .table-mobile-style3 {
+    display: none;
+}
+
+.table-style3 .table-mobile-style3 .mobile-card {
+    background-color: #ffffff; /* Default - Elementor can override */
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.table-style3 .table-mobile-style3 .mobile-card:last-child {
+    margin-bottom: 0;
+}
+
+/* Main Header (from first column - r2c1, r3c1, etc.) - DEFAULT COLORS */
+.table-style3 .table-mobile-style3 .card-main-header {
+    background-color: #1e3a8a; /* Default - Elementor can override */
+    color: #ffffff; /* Default - Elementor can override */
+    font-weight: 600;
+    font-size: 18px;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Card Content */
+.table-style3 .table-mobile-style3 .card-content {
+    padding: 15px;
+    background-color: #ffffff; /* Default - Elementor can override */
+}
+
+/* Card Items (sub-header + data pairs) */
+.table-style3 .table-mobile-style3 .card-item {
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.table-style3 .table-mobile-style3 .card-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* Sub-header (from r1 - r1c2, r1c3, r1c4) - DEFAULT COLOR */
+.table-style3 .table-mobile-style3 .card-sub-header {
+    flex: 0 0 40%;
+    font-weight: 600;
+    color: #1e3a8a; /* Default - Elementor can override */
+    font-size: 14px;
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* Data (from current row - r2c2, r2c3, r2c4) - DEFAULT COLOR */
+.table-style3 .table-mobile-style3 .card-data {
+    flex: 1;
+    color: #374151; /* Default - Elementor can override */
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .table-style3 .table-desktop {
+        display: none !important;
+    }
+
+    .table-style3 .table-mobile-style3 {
+        display: block !important;
+    }
+
+    /* Adjust sub-header width on small screens */
+    .table-style3 .table-mobile-style3 .card-sub-header {
+        flex: 0 0 35%;
+        font-size: 13px;
+    }
+
+    .table-style3 .table-mobile-style3 .card-data {
+        font-size: 13px;
+    }
+
+    .table-style3 .table-mobile-style3 .card-main-header {
+        font-size: 16px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .table-style3 .table-mobile-style3 .card-item {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .table-style3 .table-mobile-style3 .card-sub-header {
+        flex: 1;
+        padding-right: 0;
+        padding-bottom: 5px;
+    }
+
+    .table-style3 .table-mobile-style3 .card-data {
+        flex: 1;
+    }
+}
+
+/* Style 3 Specific Styling Options Support */
+.table-style3 .table-header-row .header-cell {
+    transition: background-color 0.3s ease;
+}
+
+.table-style3 .table-data-row .data-cell {
+    transition: all 0.3s ease;
+}
+
+/* Alternate Row Colors Support for Style 3 */
+.table-style3 .table-data-row:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+.table-style3 .table-data-row:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.table-style3 .table-data-row:hover {
+    background-color: #f3f4f6 !important;
 }

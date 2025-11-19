@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Elementor Table By Uchit
  * Description: Advanced responsive table widget for Elementor with extensive styling options
- * Version: 1.0.1
+ * Version: 1.0.4
  * Author: Uchit Chakma
  * License: GPLv2 or later
  */
@@ -142,35 +142,33 @@ class ElementorCustomTable {
     }
     
     public function enqueue_scripts() {
-        // Use plugin_dir_url with version for cache busting
         wp_enqueue_script(
             'elementor-table-script',
             plugin_dir_url(__FILE__) . 'assets/js/main.js',
             array('jquery'),
-            '1.0.1',
+            '1.0.4', // Updated
             true
         );
     }
     
     public function enqueue_styles() {
-        // Enqueue CSS with high priority and version for cache busting
         wp_enqueue_style(
             'elementor-table-style',
             plugin_dir_url(__FILE__) . 'assets/css/style.css',
             array(),
-            '1.0.1'
+            '1.0.4' // Updated
         );
     }
     
     // Add inline CSS as backup to ensure styles are applied
-    public function add_inline_css() {
+     public function add_inline_css() {
         if (!$this->should_load_styles()) {
             return;
         }
         
         ?>
         <style id="elementor-table-backup-css">
-        /* Backup Critical CSS - Higher Specificity */
+        /* Backup Critical CSS - Only !important on layout properties */
         .elementor-widget-custom-table .custom-table-container {
             position: relative !important;
             overflow: hidden !important;
@@ -187,47 +185,48 @@ class ElementorCustomTable {
             border-collapse: separate !important;
             border-spacing: 0 !important;
             margin: 0 !important;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
         }
         
+        /* Header - Default styles, can be overridden */
         .elementor-widget-custom-table .custom-table thead th {
-            background-color: #1e3a8a !important;
-            color: #ffffff !important;
-            font-weight: 600 !important;
-            font-size: 16px !important;
-            padding: 15px 20px !important;
-            text-align: left !important;
-            border: none !important;
-            position: relative !important;
-            white-space: nowrap !important;
-            vertical-align: middle !important;
+            background-color: #1e3a8a;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 15px 20px;
+            text-align: left;
+            border: none;
+            position: relative;
+            white-space: nowrap;
+            vertical-align: middle;
         }
         
         .elementor-widget-custom-table .custom-table thead th:first-child {
-            border-top-left-radius: 8px !important;
+            border-top-left-radius: 8px;
         }
         
         .elementor-widget-custom-table .custom-table thead th:last-child {
-            border-top-right-radius: 8px !important;
+            border-top-right-radius: 8px;
         }
         
+        /* Body - Default styles, can be overridden */
         .elementor-widget-custom-table .custom-table tbody td {
-            padding: 12px 20px !important;
-            border-bottom: 1px solid #e5e7eb !important;
-            color: #374151 !important;
-            font-size: 14px !important;
-            line-height: 1.5 !important;
-            vertical-align: middle !important;
-            background-color: #ffffff !important;
+            padding: 12px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            color: #374151;
+            font-size: 14px;
+            line-height: 1.5;
+            vertical-align: middle;
+            background-color: #ffffff;
         }
         
-        /* Style 2 Critical Styles */
+        /* Style 2 - Default styles, can be overridden */
         .elementor-widget-custom-table .table-style2 {
             display: flex !important;
             flex-direction: column !important;
-            border: 1px solid #e5e7eb !important;
-            border-radius: 8px !important;
-            overflow: hidden !important;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            overflow: hidden;
         }
         
         .elementor-widget-custom-table .table-style2 .table-row {
@@ -235,13 +234,13 @@ class ElementorCustomTable {
         }
         
         .elementor-widget-custom-table .table-style2 .table-row .row-header {
-            background-color: #1e3a8a !important;
-            color: #ffffff !important;
-            font-weight: 600 !important;
-            font-size: 16px !important;
-            padding: 15px 20px !important;
-            min-width: 200px !important;
-            max-width: 200px !important;
+            background-color: #1e3a8a;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 15px 20px;
+            min-width: 200px;
+            max-width: 200px;
             flex-shrink: 0 !important;
             display: flex !important;
             align-items: center !important;
@@ -250,29 +249,72 @@ class ElementorCustomTable {
         .elementor-widget-custom-table .table-style2 .table-row .row-data {
             display: flex !important;
             flex: 1 !important;
-            background-color: #ffffff !important;
+            background-color: #ffffff;
         }
         
         .elementor-widget-custom-table .table-style2 .table-row .row-data .data-cell {
             flex: 1 !important;
-            padding: 15px 20px !important;
-            border-right: 1px solid #e5e7eb !important;
-            color: #374151 !important;
-            font-size: 14px !important;
+            padding: 15px 20px;
+            border-right: 1px solid #e5e7eb;
+            color: #374151;
+            font-size: 14px;
             display: flex !important;
             align-items: center !important;
         }
         
         .elementor-widget-custom-table .table-style2 .table-row .row-data .data-cell:last-child {
-            border-right: none !important;
+            border-right: none;
         }
         
-        /* Mobile Styles */
+        /* Style 3 Backup - Default styles, can be overridden */
+        .elementor-widget-custom-table .table-style3 .table-header-row {
+            display: flex !important;
+            background-color: #1e3a8a;
+        }
+        
+        .elementor-widget-custom-table .table-style3 .table-header-row .header-cell {
+            flex: 1 !important;
+            padding: 15px 20px;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 16px;
+            text-align: center;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        .elementor-widget-custom-table .table-style3 .table-data-row {
+            display: flex !important;
+        }
+        
+        .elementor-widget-custom-table .table-style3 .table-data-row .data-cell {
+            flex: 1 !important;
+            padding: 15px 20px;
+            color: #374151;
+            font-size: 14px;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        .elementor-widget-custom-table .table-style3 .table-data-row .data-cell.row-header-cell {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        /* Mobile Styles - Layout only with !important */
         .elementor-widget-custom-table .table-mobile {
             display: none !important;
         }
         
         .elementor-widget-custom-table .table-mobile-style2 {
+            display: none !important;
+        }
+        
+        .elementor-widget-custom-table .table-mobile-style3 {
             display: none !important;
         }
         
@@ -286,6 +328,10 @@ class ElementorCustomTable {
             }
             
             .elementor-widget-custom-table .table-style2 .table-mobile-style2 {
+                display: block !important;
+            }
+            
+            .elementor-widget-custom-table .table-style3 .table-mobile-style3 {
                 display: block !important;
             }
         }
